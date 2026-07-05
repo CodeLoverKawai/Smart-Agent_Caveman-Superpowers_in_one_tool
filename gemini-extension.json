@@ -1,0 +1,6 @@
+{
+  "name": "smart-agent",
+  "description": "Unified, modular, and token-efficient coding assistant skills system.",
+  "version": "1.0.0",
+  "contextFileName": "GEMINI.md"
+}

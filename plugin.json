@@ -1,0 +1,9 @@
+{
+  "name": "smart-agent",
+  "version": "1.0.0",
+  "description": "Unified, modular, and token-efficient coding assistant skills system.",
+  "author": {
+    "name": "Antigravity developer"
+  },
+  "license": "MIT"
+}
