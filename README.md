@@ -1,6 +1,6 @@
 # Ada Aider
 
-**Ada-Aider** es un sistema de habilidades unificado, modular y altamente eficiente en el uso de tokens para asistentes de codificación de Inteligencia Artificial (como Claude Code, Cursor, Cline, Windsurf y Antigravity). 
+**Ada-Aider** es un sistema de habilidades unificado, modular y altamente eficiente en el uso de tokens para asistentes de codificación de Inteligencia Artificial (como Claude Code, Cursor, Cline, Windsurf y Antigravity). El nombre está inspirado en **Ada Lovelace**, la matemática británica considerada la primera programadora de la historia. 
 
 Fusiona la **disciplina operativa de Superpowers** (diseño, planificación ágil, TDD, depuración y verificación estricta) con la **comunicación ultra-abreviada de Caveman** (reducción de hasta un 75% en tokens de salida) sin perder precisión técnica.
 
