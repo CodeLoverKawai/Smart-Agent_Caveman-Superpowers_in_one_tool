@@ -90,9 +90,9 @@ function runInstaller() {
   const settingsPath = path.join(configDir, 'settings.json');
 
   // Resolve absolute paths for the hook scripts
-  const activatePath = path.resolve(__dirname, '../src/hooks/smart-activate.js');
-  const trackerPath = path.resolve(__dirname, '../src/hooks/smart-tracker.js');
-  const statuslinePath = path.resolve(__dirname, '../src/hooks/smart-statusline.sh');
+  const activatePath = path.resolve(__dirname, '../src/hooks/ada-activate.js');
+  const trackerPath = path.resolve(__dirname, '../src/hooks/ada-tracker.js');
+  const statuslinePath = path.resolve(__dirname, '../src/hooks/ada-statusline.sh');
 
   let settings = {};
   if (fs.existsSync(settingsPath)) {
@@ -129,18 +129,18 @@ function runInstaller() {
   fs.writeFileSync(tempPath, JSON.stringify(settings, null, 2), 'utf8');
   fs.renameSync(tempPath, settingsPath);
 
-  // Set executable permissions on smart-statusline.sh (chmod 755)
+  // Set executable permissions on ada-statusline.sh (chmod 755)
   if (fs.existsSync(statuslinePath)) {
     try {
       fs.chmodSync(statuslinePath, 0o755);
     } catch (err) {
-      console.error(`Warning: Failed to chmod 755 smart-statusline.sh: ${err.message}`);
+      console.error(`Warning: Failed to chmod 755 ada-statusline.sh: ${err.message}`);
     }
   } else {
-    console.error(`Warning: smart-statusline.sh not found at ${statuslinePath}`);
+    console.error(`Warning: ada-statusline.sh not found at ${statuslinePath}`);
   }
-
-  console.log(`Successfully configured smart-agent hooks and statusline in: ${settingsPath}`);
+ 
+  console.log(`Successfully configured ada-agent hooks and statusline in: ${settingsPath}`);
 }
 
 // Execute when run directly

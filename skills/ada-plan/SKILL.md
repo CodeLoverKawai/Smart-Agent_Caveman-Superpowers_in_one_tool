@@ -1,8 +1,8 @@
 ---
-name: smart-plan
+name: ada-plan
 description: Use when a spec or design is approved, before starting execution.
 ---
-# smart-plan
+# ada-plan
 
 - Write Nano-Plan to `implementation_plan.md` in conversation folder.
 - No prose/storytelling.

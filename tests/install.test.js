@@ -9,7 +9,7 @@ const installPath = path.resolve(__dirname, '../bin/install.js');
 const { stripJsoncComments, stripTrailingCommas } = require(installPath);
 
 test('Installer & Verification', async (t) => {
-  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'smart-install-test-'));
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'ada-install-test-'));
 
   t.after(() => {
     fs.rmSync(tempDir, { recursive: true, force: true });
@@ -52,7 +52,7 @@ test('Installer & Verification', async (t) => {
     // Check status line configuration
     assert.ok(content.statusLine);
     assert.strictEqual(content.statusLine.type, 'command');
-    assert.match(content.statusLine.command, /smart-statusline\.sh$/);
+    assert.match(content.statusLine.command, /ada-statusline\.sh$/);
 
     // Check hooks configuration
     assert.ok(content.hooks);
@@ -63,7 +63,7 @@ test('Installer & Verification', async (t) => {
     assert.strictEqual(content.hooks.SessionStart.length, 1);
     assert.ok(content.hooks.SessionStart[0].hooks);
     assert.strictEqual(content.hooks.SessionStart[0].hooks[0].type, 'command');
-    assert.match(content.hooks.SessionStart[0].hooks[0].command, /smart-activate\.js$/);
+    assert.match(content.hooks.SessionStart[0].hooks[0].command, /ada-activate\.js$/);
 
     // UserPromptSubmit Hook
     assert.ok(content.hooks.UserPromptSubmit);
@@ -71,10 +71,10 @@ test('Installer & Verification', async (t) => {
     assert.strictEqual(content.hooks.UserPromptSubmit.length, 1);
     assert.ok(content.hooks.UserPromptSubmit[0].hooks);
     assert.strictEqual(content.hooks.UserPromptSubmit[0].hooks[0].type, 'command');
-    assert.match(content.hooks.UserPromptSubmit[0].hooks[0].command, /smart-tracker\.js$/);
+    assert.match(content.hooks.UserPromptSubmit[0].hooks[0].command, /ada-tracker\.js$/);
 
-    // Verify smart-statusline.sh permissions were updated to 755
-    const statuslinePath = path.resolve(__dirname, '../src/hooks/smart-statusline.sh');
+    // Verify ada-statusline.sh permissions were updated to 755
+    const statuslinePath = path.resolve(__dirname, '../src/hooks/ada-statusline.sh');
     const stats = fs.statSync(statuslinePath);
     assert.strictEqual(stats.mode & 0o777, 0o755);
   });
@@ -153,6 +153,6 @@ test('Installer & Verification', async (t) => {
     const hooksList = content.hooks.SessionStart[0].hooks;
     assert.strictEqual(hooksList.length, 2);
     assert.strictEqual(hooksList[0].command, "echo 'Session starting...'");
-    assert.match(hooksList[1].command, /smart-activate\.js$/);
+    assert.match(hooksList[1].command, /ada-activate\.js$/);
   });
 });

@@ -5,32 +5,32 @@ const path = require('node:path');
 const os = require('node:os');
 
 // We import the functions to test
-const { getDefaultMode, getFlagPath, safeWriteFlag } = require('../src/hooks/smart-config.js');
+const { getDefaultMode, getFlagPath, safeWriteFlag } = require('../src/hooks/ada-config.js');
 
-test('smart-config getDefaultMode', (t) => {
-  const originalEnv = process.env.SMART_DEFAULT_MODE;
+test('ada-config getDefaultMode', (t) => {
+  const originalEnv = process.env.ADA_DEFAULT_MODE;
 
   t.afterEach(() => {
     if (originalEnv === undefined) {
-      delete process.env.SMART_DEFAULT_MODE;
+      delete process.env.ADA_DEFAULT_MODE;
     } else {
-      process.env.SMART_DEFAULT_MODE = originalEnv;
+      process.env.ADA_DEFAULT_MODE = originalEnv;
     }
   });
 
   // Test default mode fallback
-  delete process.env.SMART_DEFAULT_MODE;
+  delete process.env.ADA_DEFAULT_MODE;
   assert.strictEqual(getDefaultMode(), 'full');
 
   // Test default mode from env variable
-  process.env.SMART_DEFAULT_MODE = 'lite';
+  process.env.ADA_DEFAULT_MODE = 'lite';
   assert.strictEqual(getDefaultMode(), 'lite');
 
-  process.env.SMART_DEFAULT_MODE = 'ultra';
+  process.env.ADA_DEFAULT_MODE = 'ultra';
   assert.strictEqual(getDefaultMode(), 'ultra');
 });
 
-test('smart-config getFlagPath', (t) => {
+test('ada-config getFlagPath', (t) => {
   const originalConfigDir = process.env.CLAUDE_CONFIG_DIR;
 
   t.afterEach(() => {
@@ -43,16 +43,16 @@ test('smart-config getFlagPath', (t) => {
 
   // Test when CLAUDE_CONFIG_DIR is set
   process.env.CLAUDE_CONFIG_DIR = '/custom/config/dir';
-  assert.strictEqual(getFlagPath(), path.resolve('/custom/config/dir/.smart-agent-active'));
+  assert.strictEqual(getFlagPath(), path.resolve('/custom/config/dir/.ada-agent-active'));
 
   // Test when CLAUDE_CONFIG_DIR is NOT set
   delete process.env.CLAUDE_CONFIG_DIR;
-  const expectedPath = path.resolve(os.homedir(), '.smart-agent-active');
+  const expectedPath = path.resolve(os.homedir(), '.ada-agent-active');
   assert.strictEqual(getFlagPath(), expectedPath);
 });
 
-test('smart-config safeWriteFlag', (t) => {
-  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'smart-agent-test-'));
+test('ada-config safeWriteFlag', (t) => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'ada-agent-test-'));
 
   t.after(() => {
     fs.rmSync(tempDir, { recursive: true, force: true });

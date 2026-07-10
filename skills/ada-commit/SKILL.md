@@ -1,8 +1,8 @@
 ---
-name: smart-commit
+name: ada-commit
 description: Use when creating git commit messages.
 ---
-# smart-commit
+# ada-commit
 
 - Conventional commits: `<type>(<scope>): <summary>`. Imperative mood, ≤50 chars.
 - Body only for non-obvious "why", breaking changes, or issue links.

@@ -20,7 +20,7 @@ function calculateSavings(inputText, outputText) {
  */
 function getSavingsPath() {
   const baseDir = process.env.CLAUDE_CONFIG_DIR || os.homedir();
-  return path.resolve(baseDir, '.smart-stats-savings');
+  return path.resolve(baseDir, '.ada-stats-savings');
 }
 
 /**
@@ -94,7 +94,7 @@ function getAccumulatedSavings() {
 
 function getLastParsedPath() {
   const baseDir = process.env.CLAUDE_CONFIG_DIR || os.homedir();
-  return path.resolve(baseDir, '.smart-stats-last');
+  return path.resolve(baseDir, '.ada-stats-last');
 }
 
 function findMostRecentJsonl(dir) {

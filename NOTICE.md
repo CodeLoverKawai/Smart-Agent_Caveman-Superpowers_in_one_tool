@@ -12,6 +12,31 @@ This project incorporates portions of code and instructions derived from the fol
    - **Source**: https://github.com/JuliusBrussee/caveman
    - **License**: MIT License (Copyright (c) 2026 Julius Brussee)
 
+3. **Taste-Skill**
+   - **Original Author**: Leonxlnx
+   - **Source**: https://github.com/Leonxlnx/taste-skill
+   - **License**: MIT License (Copyright (c) 2026 Leonxlnx)
+
+4. **Claude-Mem**
+   - **Original Author**: thedotmack
+   - **Source**: https://github.com/thedotmack/claude-mem
+   - **License**: MIT License (Copyright (c) 2026 thedotmack)
+
+5. **Getsentry Sentry-Workflow**
+   - **Original Author**: Functional Sentry team
+   - **Source**: https://github.com/getsentry/sentry-javascript
+   - **License**: MIT License (Copyright (c) 2026 getsentry)
+
+6. **Agent-Skills**
+   - **Original Author**: Addy Osmani
+   - **Source**: https://github.com/addyosmani/agent-skills
+   - **License**: MIT License (Copyright (c) 2026 Addy Osmani)
+
+7. **Harmonist**
+   - **Original Author**: GammaLabTechnologies
+   - **Source**: https://github.com/GammaLabTechnologies/harmonist
+   - **License**: MIT License (Copyright (c) 2026 GammaLabTechnologies)
+
 ---
 
 ## MIT License (MIT)

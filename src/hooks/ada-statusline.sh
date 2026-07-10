@@ -1,9 +1,9 @@
 #!/bin/bash
-# smart-agent — statusline badge script for Claude Code
+# ada-agent — statusline badge script for Claude Code
 
 BASE_DIR="${CLAUDE_CONFIG_DIR:-$HOME}"
-FLAG="$BASE_DIR/.smart-agent-active"
-SAVINGS_FILE="$BASE_DIR/.smart-stats-savings"
+FLAG="$BASE_DIR/.ada-agent-active"
+SAVINGS_FILE="$BASE_DIR/.ada-stats-savings"
 
 # Securely checks that neither file is a symlink (refuses/aborts if [ -L "$file" ])
 [ -L "$FLAG" ] && exit 0
@@ -24,8 +24,8 @@ esac
 # Convert mode to uppercase for display
 MODE_UPPER=$(printf '%s' "$MODE" | tr '[:lower:]' '[:upper:]')
 
-# Outputs a colored badge [SMART:MODE] using orange color
-printf '\033[38;5;172m[SMART:%s]\033[0m' "$MODE_UPPER"
+# Outputs a colored badge [ADA:MODE] using orange color
+printf '\033[38;5;172m[ADA:%s]\033[0m' "$MODE_UPPER"
 
 # Appends the accumulated savings (e.g., ⛏ 12.4k if savings are found)
 if [ -f "$SAVINGS_FILE" ]; then

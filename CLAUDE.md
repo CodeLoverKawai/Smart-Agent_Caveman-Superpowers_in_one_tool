@@ -1,4 +1,4 @@
-# smart-agent
+# ada-agent
 
 ## Build and Test Command
 - Test command: `node --test tests/*.test.js`

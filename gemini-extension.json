@@ -1,6 +1,6 @@
 {
-  "name": "smart-agent",
+  "name": "ada-agent",
   "description": "Unified, modular, and token-efficient coding assistant skills system.",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "contextFileName": "GEMINI.md"
 }

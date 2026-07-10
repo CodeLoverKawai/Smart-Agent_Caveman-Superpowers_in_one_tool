@@ -3,11 +3,11 @@ const path = require('path');
 const os = require('os');
 
 /**
- * Gets the default mode for the smart-agent.
+ * Gets the default mode for the ada-agent.
  * @returns {string} The active default mode ("full" or environment variable value).
  */
 function getDefaultMode() {
-  return process.env.SMART_DEFAULT_MODE || 'full';
+  return process.env.ADA_DEFAULT_MODE || 'full';
 }
 
 /**
@@ -16,7 +16,7 @@ function getDefaultMode() {
  */
 function getFlagPath() {
   const baseDir = process.env.CLAUDE_CONFIG_DIR || os.homedir();
-  return path.resolve(baseDir, '.smart-agent-active');
+  return path.resolve(baseDir, '.ada-agent-active');
 }
 
 /**

@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { getDefaultMode, getFlagPath, safeWriteFlag } = require('./smart-config.js');
+const { getDefaultMode, getFlagPath, safeWriteFlag } = require('./ada-config.js');
 
 const flagPath = getFlagPath();
 
@@ -34,8 +34,8 @@ process.stdin.on('end', () => {
     const prompt = (data.prompt || '').trim();
     const promptLower = prompt.toLowerCase();
 
-    // 1. Checks if the prompt starts with a slash command /smart-agent or /smart
-    if (/^\/(smart-agent|smart)(\s|$)/i.test(promptLower)) {
+    // 1. Checks if the prompt starts with a slash command /ada-agent or /ada
+    if (/^\/(ada-agent|ada)(\s|$)/i.test(promptLower)) {
       const parts = prompt.split(/\s+/);
       const arg = (parts[1] || '').toLowerCase();
 
@@ -44,7 +44,7 @@ process.stdin.on('end', () => {
         try { fs.unlinkSync(flagPath); } catch (e) {}
         process.stdout.write(JSON.stringify({
           decision: 'block',
-          reason: 'Smart-agent deactivated.'
+          reason: 'Ada-agent deactivated.'
         }));
         return;
       } else if (['lite', 'full', 'ultra'].includes(arg)) {
@@ -52,11 +52,11 @@ process.stdin.on('end', () => {
         safeWriteFlag(flagPath, arg);
         process.stdout.write(JSON.stringify({
           decision: 'block',
-          reason: `Smart-agent mode updated to: ${arg}`
+          reason: `Ada-agent mode updated to: ${arg}`
         }));
         return;
       } else if (arg === 'stats') {
-        const { processMostRecentLog } = require('./smart-stats.js');
+        const { processMostRecentLog } = require('./ada-stats.js');
         let statsResult;
         try {
           statsResult = processMostRecentLog();
@@ -65,7 +65,7 @@ process.stdin.on('end', () => {
         }
         process.stdout.write(JSON.stringify({
           decision: 'block',
-          reason: `Smart-agent stats:\n- Session turns: ${statsResult.turns}\n- Output characters: ${statsResult.chars}\n- Total accumulated savings: ${statsResult.totalSavings}`
+          reason: `Ada-agent stats:\n- Session turns: ${statsResult.turns}\n- Output characters: ${statsResult.chars}\n- Total accumulated savings: ${statsResult.totalSavings}`
         }));
         return;
       } else if (!arg) {
@@ -73,23 +73,23 @@ process.stdin.on('end', () => {
         process.stdout.write(JSON.stringify({
           decision: 'block',
           reason: activeMode 
-            ? `Smart-agent is active in mode: ${activeMode}`
-            : 'Smart-agent is inactive.'
+            ? `Ada-agent is active in mode: ${activeMode}`
+            : 'Ada-agent is inactive.'
         }));
         return;
       } else {
         process.stdout.write(JSON.stringify({
           decision: 'block',
-          reason: `Unknown smart-agent mode: ${parts[1]}. Use: /smart-agent [lite|full|ultra|off]`
+          reason: `Unknown ada-agent mode: ${parts[1]}. Use: /ada-agent [lite|full|ultra|off]`
         }));
         return;
       }
     }
 
     // 2. Checks natural language deactivation or activation phrases
-    const stopRegex = /\b(stop|disable|deactivate|turn off)\b.*\bsmart-agent\b/i;
+    const stopRegex = /\b(stop|disable|deactivate|turn off)\b.*\bada-agent\b/i;
     const normalModeRegex = /\bnormal mode\b/i;
-    const startRegex = /\b(activate|enable|turn on|start|use|talk like)\b.*\bsmart-agent\b/i;
+    const startRegex = /\b(activate|enable|turn on|start|use|talk like)\b.*\bada-agent\b/i;
     const talkLikeCavemanRegex = /\btalk like caveman\b/i;
 
     const deactivating = stopRegex.test(prompt) || normalModeRegex.test(prompt);
@@ -102,7 +102,7 @@ process.stdin.on('end', () => {
       safeWriteFlag(flagPath, defaultMode);
     }
 
-    // 3. If smart-agent is active, appends a tiny reminder tag or outputs reinforcement
+    // 3. If ada-agent is active, appends a tiny reminder tag or outputs reinforcement
     const activeMode = readFlag(flagPath);
     if (activeMode) {
       const mentionsClarityFiles = 
@@ -113,8 +113,8 @@ process.stdin.on('end', () => {
         promptLower.includes('docs/specs/');
 
       const additionalContext = mentionsClarityFiles
-        ? `SMART-AGENT ACTIVE (mode: ${activeMode}). Target involves design/plan/task files. SUSPEND COMPRESSION for this turn. Respond in standard, clear language.`
-        : `SMART-AGENT ACTIVE (mode: ${activeMode}). Keep responses concise, remove pleasantries, write code normally.`;
+        ? `ADA-AGENT ACTIVE (mode: ${activeMode}). Target involves design/plan/task files. SUSPEND COMPRESSION for this turn. Respond in standard, clear language.`
+        : `ADA-AGENT ACTIVE (mode: ${activeMode}). Keep responses concise, remove pleasantries, write code normally.`;
 
       data.hookSpecificOutput = {
         hookEventName: "UserPromptSubmit",

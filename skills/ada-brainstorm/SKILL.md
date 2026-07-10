@@ -1,8 +1,8 @@
 ---
-name: smart-brainstorm
+name: ada-brainstorm
 description: Use when user requests a new feature, project, or behavior change, before planning.
 ---
-# smart-brainstorm
+# ada-brainstorm
 
 - Ask exactly one design/clarifying question per message. Prioritize multiple-choice options.
 - Decompose large features into sub-projects before asking details.

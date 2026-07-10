@@ -1,8 +1,8 @@
 ---
-name: smart-code
+name: ada-code
 description: Use when writing new code, fixing bugs, or refactoring in the implementation phase.
 ---
-# smart-code
+# ada-code
 
 - Mandatory TDD:
   1. Write failing test (RED).

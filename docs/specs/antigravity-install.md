@@ -1,6 +1,6 @@
 # Guía de Instalación en Antigravity (Gemini/CLI)
 
-Este documento detalla los pasos para instalar y activar el plugin **`smart-agent`** en tu entorno global de Google Antigravity.
+Este documento detalla los pasos para instalar y activar el plugin **`ada-agent`** en tu entorno global de Google Antigravity.
 
 ---
 
@@ -16,7 +16,7 @@ Para que Antigravity reconozca y cargue las habilidades, la carpeta del plugin d
 - `gemini-extension.json`: Define el metadato del plugin.
 - `GEMINI.md`: Indica la directiva de carga de todas las habilidades del directorio `skills/`.
 - `plugin.json` e `installed_version.json`: Metadatos requeridos para la indexación automática del motor.
-- `skills/`: Carpeta con los directorios de cada habilidad (`smart-agent`, `smart-brainstorm`, `smart-plan`, etc.).
+- `skills/`: Carpeta con los directorios de cada habilidad (`ada-agent`, `ada-brainstorm`, `ada-plan`, etc.).
 
 ---
 
@@ -29,8 +29,8 @@ Copia la carpeta del proyecto a la ruta de plugins globales de Antigravity:
 # Crear directorio de plugins si no existe
 mkdir -p ~/.gemini/config/plugins/
 
-# Copiar el plugin smart-agent
-cp -r /home/rousseau/Downloads/Skills/smart-agent ~/.gemini/config/plugins/smart-agent
+# Copiar el plugin ada-agent
+cp -r /home/rousseau/Downloads/Skills/ada-agent ~/.gemini/config/plugins/ada-agent
 ```
 
 ### Paso 2: Recargar Antigravity
@@ -44,10 +44,10 @@ El motor de Antigravity indexa las habilidades únicamente al inicio de la sesi�
 
 ## 4. Confirmación de Carga
 Al iniciar una nueva conversación, Antigravity mostrará las habilidades cargadas al principio del contexto del sistema. Deberías ver las siguientes habilidades en la lista de `Available skills`:
-- `smart-agent`
-- `smart-brainstorm`
-- `smart-plan`
-- `smart-code`
-- `smart-verify`
-- `smart-commit`
-- `smart-review`
+- `ada-agent`
+- `ada-brainstorm`
+- `ada-plan`
+- `ada-code`
+- `ada-verify`
+- `ada-commit`
+- `ada-review`

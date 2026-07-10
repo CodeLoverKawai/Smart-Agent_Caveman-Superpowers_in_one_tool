@@ -5,9 +5,9 @@ const path = require('node:path');
 const os = require('node:os');
 
 // We import the functions to test
-const { calculateSavings, updateSavings } = require('../src/hooks/smart-stats.js');
+const { calculateSavings, updateSavings } = require('../src/hooks/ada-stats.js');
 
-test('smart-stats calculateSavings', () => {
+test('ada-stats calculateSavings', () => {
   // Test case 1: Standard output text length calculation
   // Estimated verbose text length is outputText.length * 3.0
   // Savings is estimated verbose length minus actual outputText length.
@@ -24,9 +24,9 @@ test('smart-stats calculateSavings', () => {
   assert.strictEqual(calculateSavings(input, output2), 200);
 });
 
-test('smart-stats updateSavings', (t) => {
+test('ada-stats updateSavings', (t) => {
   const originalConfigDir = process.env.CLAUDE_CONFIG_DIR;
-  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'smart-stats-test-'));
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'ada-stats-test-'));
 
   t.afterEach(() => {
     if (originalConfigDir === undefined) {
@@ -42,7 +42,7 @@ test('smart-stats updateSavings', (t) => {
 
   // Setup temporary config directory
   process.env.CLAUDE_CONFIG_DIR = tempDir;
-  const savingsFile = path.join(tempDir, '.smart-stats-savings');
+  const savingsFile = path.join(tempDir, '.ada-stats-savings');
 
   // Test Case 1: Initial write (file does not exist)
   const result1 = updateSavings(50);
@@ -60,12 +60,12 @@ test('smart-stats updateSavings', (t) => {
   const symlinkFile = path.join(tempDir, 'symlink-savings');
   fs.symlinkSync(targetFile, symlinkFile);
 
-  // Point CLAUDE_CONFIG_DIR to a directory where .smart-stats-savings would resolve to the symlink
+  // Point CLAUDE_CONFIG_DIR to a directory where .ada-stats-savings would resolve to the symlink
   // We can test the security check by passing a symlink file path directly or setting up the environment.
   // Let's test the secure path validation: if the savings file is a symlink, it should throw.
   // We can temporarily swap process.env.CLAUDE_CONFIG_DIR to simulate this.
-  const tempDirSymlink = fs.mkdtempSync(path.join(os.tmpdir(), 'smart-stats-symlink-test-'));
-  const symlinkSavingsPath = path.join(tempDirSymlink, '.smart-stats-savings');
+  const tempDirSymlink = fs.mkdtempSync(path.join(os.tmpdir(), 'ada-stats-symlink-test-'));
+  const symlinkSavingsPath = path.join(tempDirSymlink, '.ada-stats-savings');
   fs.symlinkSync(targetFile, symlinkSavingsPath);
 
   process.env.CLAUDE_CONFIG_DIR = tempDirSymlink;
